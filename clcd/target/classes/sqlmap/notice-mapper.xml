@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="notice.mapper">
+	<!-- 매퍼 오류 있음 -->
+	<sql id="where_search">
+	<if test="search == 'title' or search == 'content'">
+		where ${search} like '%'||#{keyword}||'%'	
+	</if>
+	
+	<if test="search == 'writer' ">
+		where writer in ( select id from member where name like '%'||#{keyword}||'%' )
+	</if>
+	
+	<if test="search == 'all' ">
+		where title like '%'||#{keyword}||'%'
+		or content  like '%'||#{keyword}||'%'
+		or writer in ( select id from member where name like '%'||#{keyword}||'%' )	
+	</if>
+	</sql>
+
+
+	<update id="update">
+		update notice set title=#{title}, content=#{content}
+				, filename = #{filename, jdbcType=VARCHAR}
+				, filepath = #{filepath, jdbcType=VARCHAR}
+		where id = #{id}	
+	</update>
+	
+	<delete id="delete">
+		delete from notice
+		where id = #{id}
+	</delete>
+	
+	<update id="read">
+		update notice set readcnt = readcnt + 1
+		where id = #{id}
+	</update>
+	
+	<select id='detail' resultType="notice.NoticeVO">
+		select n.*, (select name from member where id = n.writer) name
+		from notice n
+		where id = #{id} 
+	
+	</select>
+	<insert id="insert">
+		insert into notice (id, title, content, writer, filename, filepath)
+		values ( seq_notice.nextval, #{title}, #{content}, #{writer} ,
+				 #{filename, jdbcType=VARCHAR}, #{filepath, jdbcType=VARCHAR})
+	</insert>
+
+	<select id="totalList" resultType="integer">
+		select count(*) from notice <include refid="where_search" />
+	</select>
+	
+	<select id="list" resultType="notice.NoticeVO">
+		select * 
+		from ( select rownum no, n.*, (select name from member where id = n.writer) name 
+				from (select * from notice <include refid="where_search" /> 
+				order by root, step desc) n
+				order by no desc )
+		where no between #{beginList} and #{endList}	
+	</select>
+	
+	<insert id="reply_insert">
+		
+	<![CDATA[
+	{
+		call declare
+		begin	
+			update notice set step = step +1 where root = #{root} and step > #{step};
+			
+			insert into notice (id, title, content, writer, filename, filepath, root, step, indent)
+			values (seq_notice.nextval, #{title}, #{content}, #{writer},
+					#{filename, jdbcType=VARCHAR}, #{filepath, jdbcType=VARCHAR},
+					#{root}, #{step}+1, #{indent}+1);
+		end
+	}
+	]]>				
+	</insert>
+	
+<!-- 	<select id="list" resultType="notice.NoticeVO"> -->
+<!-- 		select * from notice  -->
+<!-- 		select rownum no, n.*, (select name from member where id = n.writer) name  -->
+<!-- 		from (select * from notice order by id) n -->
+<!-- 		order by no desc -->
+<!-- 	</select>	 -->
+</mapper>

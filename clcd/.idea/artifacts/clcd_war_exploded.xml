@@ -1,0 +1,64 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="clcd:war exploded">
+    <output-path>$PROJECT_DIR$/target/clcd-1.0.0-BUILD-SNAPSHOT</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>clcd</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="clcd" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.springframework:spring-context:5.3.16" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-aop:5.3.16" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-beans:5.3.16" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-core:5.3.16" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-jcl:5.3.16" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-expression:5.3.16" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:5.3.16" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-web:5.3.16" />
+          <element id="library" level="project" name="Maven: org.aspectj:aspectjrt:1.6.10" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.6.6" />
+          <element id="library" level="project" name="Maven: org.slf4j:jcl-over-slf4j:1.6.6" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-log4j12:1.6.6" />
+          <element id="library" level="project" name="Maven: log4j:log4j:1.2.15" />
+          <element id="library" level="project" name="Maven: javax.inject:javax.inject:1" />
+          <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
+          <element id="library" level="project" name="Maven: com.oracle.database.jdbc:ojdbc8:21.5.0.0" />
+          <element id="library" level="project" name="Maven: commons-dbcp:commons-dbcp:1.4" />
+          <element id="library" level="project" name="Maven: commons-pool:commons-pool:1.5.4" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:5.3.16" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-tx:5.3.16" />
+          <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.5.9" />
+          <element id="library" level="project" name="Maven: org.mybatis:mybatis-spring:2.0.6" />
+          <element id="library" level="project" name="Maven: org.apache.tiles:tiles-jsp:3.0.8" />
+          <element id="library" level="project" name="Maven: org.apache.tiles:tiles-servlet:3.0.8" />
+          <element id="library" level="project" name="Maven: org.apache.tiles:tiles-core:3.0.8" />
+          <element id="library" level="project" name="Maven: commons-digester:commons-digester:2.0" />
+          <element id="library" level="project" name="Maven: commons-beanutils:commons-beanutils:1.8.0" />
+          <element id="library" level="project" name="Maven: org.apache.tiles:tiles-request-servlet:1.0.7" />
+          <element id="library" level="project" name="Maven: org.apache.tiles:tiles-template:3.0.8" />
+          <element id="library" level="project" name="Maven: org.apache.tiles:tiles-api:3.0.8" />
+          <element id="library" level="project" name="Maven: org.apache.tiles:tiles-autotag-core-runtime:1.2" />
+          <element id="library" level="project" name="Maven: org.apache.tiles:tiles-request-jsp:1.0.7" />
+          <element id="library" level="project" name="Maven: org.apache.tiles:tiles-request-api:1.0.7" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.13.1" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.13.1" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.13.1" />
+          <element id="library" level="project" name="Maven: org.json:json:20211205" />
+          <element id="library" level="project" name="Maven: commons-fileupload:commons-fileupload:1.4" />
+          <element id="library" level="project" name="Maven: commons-io:commons-io:2.2" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/target/clcd-1.0.0-BUILD-SNAPSHOT/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="clcd/web/Web" />
+    </root>
+  </artifact>
+</component>
